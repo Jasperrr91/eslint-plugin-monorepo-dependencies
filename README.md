@@ -45,3 +45,5 @@ Then configure the rules you want to use under the rules section.
 ## LICENSE
 
 MIT
+
+[recommended]: https://img.shields.io/badge/-recommended-lightgrey.svg
