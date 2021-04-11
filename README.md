@@ -1,35 +1,46 @@
-# ESLint plugin tutorial
+## Installation
 
-## What's this?
+```
+$ yarn add --dev eslint eslint-plugin-jest
+```
 
-This is an example repository to explain how to create your ESLint rules.
+**Note:** If you installed ESLint globally then you must also install
+`eslint-plugin-jest` globally.
 
-## Why should we learn how to create custom ESLint rules?
+## Usage
 
-Lint rules help to keep our codes' quality constant. Automatic code checking brings time for more productive activities, and also eliminates indivisual effects from code review.
+Add `monorepo-dependencies` to the plugins section of your `.eslintrc` configuration file. You
+should omit the `eslint-plugin-` prefix:
 
-Creating ESLint rules is a good subject to learn AST(Abstract Syntax Tree) analysis. Today, analysis of AST is the foundation of the JavaScript build ecosystem. There are many libraries using AST, such as Babel plugins, custom TypeScript transformers, prettier, webpack and so on. Your team's JavaScript gets improved significantly if you can control AST freely!
+```json
+{
+  "plugins": ["monorepo-dependencies"]
+}
+```
 
-## Tutorial
+Then configure the rules you want to use under the rules section.
 
-[See guides](./guide/README.md).
+```json
+{
+  "rules": {
+    "monorepo-dependencies/no-unlisted-package-import": "error"
+  }
+}
+```
 
-## Getting started
+## Rules
 
-This repository is also designed to work as a project template for custom ESLint rules.
+<!-- begin base rules list -->
 
-If you want to start quickly, follow the procedure below:
+| Rule                                                                         | Description                                                     | Configurations   | Fixable      |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------- | ---------------- | ------------ |
+| [no-unlisted-package-import](docs/rules/no-unlisted-package-import.md)       | Enforce valid titles                                            | ![recommended][] |              |
 
-- Clone this repository
-- Remove `.git` and `guide` dirs
-- Change pkg name via edit `package.json`
-- Change and test rule codes under `src/rules` dir
+<!-- end base rules list -->
 
-This repository includes:
+## Credit
 
-- TypeScript setting
-- Jest
-- GitHub actions configuration
+- [eslint-plugin-tutorial (serving as a template)](https://github.com/Quramy/eslint-plugin-tutorial)
 
 ## LICENSE
 
