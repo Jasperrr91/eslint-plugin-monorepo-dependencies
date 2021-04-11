@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-monorepo-dependencies",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Monorepo dependency rules to keep your dependencies in check",
   "main": "lib/index.js",
   "scripts": {

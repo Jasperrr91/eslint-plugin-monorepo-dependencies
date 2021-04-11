@@ -70,22 +70,9 @@ const rule: Rule.RuleModule = {
     },
   },
   create: context => {
-    // const filenames = fs.readdirSync(`${__dirname}/../../../`);
-
-    // console.log("\nCurrent directory filenames:");
-    // filenames.forEach(file => {
-    //   console.log(file);
-    // });
-    // console.log("[FILENAME]");
-
-    // console.log(JSON.stringify(context.getFilename()));
-    // console.log("[PACKAGES]");
-
     const filePath = getPathWithoutFile(context.getFilename());
     const packages = findTwoPackageJsons(filePath);
     const dependencies = getDependenciesFromPackageJsons(packages);
-    // console.log(JSON.stringify(findTwoPackageJsons(filePath)));
-    // console.log(JSON.stringify(dependencies));
 
     return {
       ImportDeclaration: (node) => {
@@ -105,33 +92,6 @@ const rule: Rule.RuleModule = {
           });
         }
       }
-      // CallExpression: function (node) {
-      //   const callee = node.callee as any;
-      //   // console.log(callee);
-      //   if (
-      //     callee.object &&
-      //     callee.object.name === 'yup' &&
-      //     callee.property &&
-      //     callee.property.name === 'validateSync'
-      //   ) {
-      //     // check one of the parents to see if "CHECK &&" is present
-      //     const calleeLogicalExpression = callee.parent.parent;
-      //     if (calleeLogicalExpression.type !== 'LogicalExpression') {
-      //       // if that "grand parent" expression is not of type 'LogicalExpression' (meaning there's no logical operator || or &&)
-      //       // or that the left part of that expression is not CHECK (the right part being yup.validateSync)
-      //       // then we report this case as a lint error
-      //       context.report({ node, messageId: 'unexpected' });
-      //     }
-      //   }
-      // }
-
-      // "CallExpression > MemberExpression > Identifier.property[name='apply']": (node: Node) => {
-      //   context.report({
-      //     // message: "Don't use 'apply'",
-      //     message: `Hello ${context}`,
-      //     node,
-      //   });
-      // },
     };
   },
 };
